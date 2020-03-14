@@ -8,6 +8,7 @@ services:
       - ./coffee:/code
     depends_on:
       - bean
+      - report
   bean:
     image: bean_web
     build: ./bean
@@ -15,3 +16,10 @@ services:
       - "4000:4000"
     volumes:
       - ./bean:/code
+  report:
+    image: report_web
+    build: ./report
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./report:/code
