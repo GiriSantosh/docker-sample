@@ -1,0 +1,17 @@
+version: "2"
+services:
+  web:
+    build: ./coffee
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./coffee:/code
+    depends_on:
+      - bean
+  bean:
+    image: bean_web
+    build: ./bean
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./bean:/code
