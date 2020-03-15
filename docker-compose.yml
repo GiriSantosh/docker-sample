@@ -1,9 +1,21 @@
 version: "2"
 services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_PASSWORD: admin@123*
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
+      - dbvolume:/var/lib/postgresql/data
   web:
     build: ./coffee
     ports:
-      - "5000:5000"
+      - "8081:5000"
     volumes:
       - ./coffee:/code
     depends_on:
@@ -11,15 +23,24 @@ services:
       - report
   bean:
     image: bean_web
+    environment:
+      DB_PASS: admin@123*
+      DB_USER: postgres
+      DB: postgres
+      DB_HOST: db
+    links:
+      - db
     build: ./bean
     ports:
-      - "4000:4000"
+      - "8082:4000"
     volumes:
       - ./bean:/code
   report:
     image: report_web
     build: ./report
     ports:
-      - "5001:5000"
+      - "8083:5000"
     volumes:
       - ./report:/code
+volumes:
+  dbvolume:
