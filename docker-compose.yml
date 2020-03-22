@@ -12,7 +12,8 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
       - dbvolume:/var/lib/postgresql/data
-  web:
+  coffee:
+    image: coffee_web
     build: ./coffee
     ports:
       - "8081:5000"
