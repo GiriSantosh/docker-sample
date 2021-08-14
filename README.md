@@ -1,7 +1,5 @@
 # docker-sample
-experiment on docker with multiple microservice (coffee, bean and report)
-
-use current dir docker-compose up command
+Experiment on docker with multiple microservice (coffee, bean and report) using **Python**
 
 Architecture Diagram (Thanks to [Blog](https://medium.com/@krishnakummar/creating-block-diagrams-from-your-docker-compose-yml-da9d5a2450b4)!) 
 ![coffee-topology](https://user-images.githubusercontent.com/19261318/76702601-ef3a9700-66f0-11ea-8559-897c3a977426.png)
